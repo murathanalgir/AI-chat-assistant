@@ -22,11 +22,11 @@ function App() {
       setHistory((oldHistory) => [
         ...oldHistory,
         {
-          role: "user",
+          role: "You",
           parts: [{ text: prompt }],
         },
         {
-          role: "model",
+          role: "Gemini",
           parts: [{ text: data.text }],
         },
       ]);
@@ -39,20 +39,20 @@ function App() {
    
   };
   return (
-    <div className="w-[960px] ml-[20px] mt-[32px]">
+    <div className="w-[960px] text-xl flex flex-col">
       <input
-        className="h-[40px] w-[590px] mb-[16px]"
+        className="h-[40px]  m-5"
         onChange={(e) => setPrompt(e.target.value)}
         value={prompt}
       />
       <button
-        className="w-[600px] h-[40px]"
+        className="w-[960px] h-[40px] m-5"
         disabled={loading}
         onClick={sendChat}
       >
         {loading ? "Loading..." : "Send"}
       </button>
-      <div className="m-[10px] w-[960px] p-[4px] border-1 border-black border-r-[16px]">
+      <div className="m-5 w-[960px] ">
         {history.map((chat, index) => (
           <div key={index}>
             <p>{chat.role}:</p>
