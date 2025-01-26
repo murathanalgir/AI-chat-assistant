@@ -32,27 +32,33 @@ function App() {
       ]);
       setPrompt("");
       setLoading(false);
+      console.log(data);
     } catch (error) {
       console.error(error);
     }
+   
   };
   return (
-    <div className="w-[600px] m-auto mt-[32px]">
+    <div className="w-[960px] ml-[20px] mt-[32px]">
       <input
         className="h-[40px] w-[590px] mb-[16px]"
         onChange={(e) => setPrompt(e.target.value)}
         value={prompt}
       />
-      <button className="w-[600px] h-[40px]" disabled={loading} onClick={sendChat}>
+      <button
+        className="w-[600px] h-[40px]"
+        disabled={loading}
+        onClick={sendChat}
+      >
         {loading ? "Loading..." : "Send"}
       </button>
-      <div className="m-[17px] p-[8px] border-1 border-black border-r-[16px]">
-      {history.map((chat, index) => (
-        <div key={index}>
-        <h3>{chat.role}</h3>
-        <p>{chat.parts[0].text}</p>
-        </div>
-      ))}
+      <div className="m-[10px] w-[960px] p-[4px] border-1 border-black border-r-[16px]">
+        {history.map((chat, index) => (
+          <div key={index}>
+            <p>{chat.role}:</p>
+            <p>{chat.parts[0].text}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
